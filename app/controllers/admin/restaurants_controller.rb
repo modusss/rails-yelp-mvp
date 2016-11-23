@@ -1,44 +1,13 @@
-class RestaurantsController < ApplicationController
+class Admin::RestaurantsController < ApplicationController
   before_action :set_restaurant, only: [:show, :edit, :update, :destroy]
 
-  # GET /restaurants
-  # GET /restaurants.json
   def index
-    @restaurants = Restaurant.all
-  end
-
-  # GET /restaurants/1
-  # GET /restaurants/1.json
-  def show
-    # I need to exhibit the respective review on show page
-    # so here I already have @restaurant that has that respective data
-    # the method 'reviews' here is what calls the content of this table because 'restaurant has many reviews'
-    @reviews = @restaurant.reviews
-  end
-
-  # GET /restaurants/new
-  def new
-    @restaurant = Restaurant.new
+    # Let's anticipate on next week (with login)
+    @restaurant = current_user.restaurants
   end
 
   # GET /restaurants/1/edit
   def edit
-  end
-
-  # POST /restaurants
-  # POST /restaurants.json
-  def create
-    @restaurant = Restaurant.new(restaurant_params)
-
-    respond_to do |format|
-      if @restaurant.save
-        format.html { redirect_to @restaurant, notice: 'Restaurant was successfully created.' }
-        format.json { render :show, status: :created, location: @restaurant }
-      else
-        format.html { render :new }
-        format.json { render json: @restaurant.errors, status: :unprocessable_entity }
-      end
-    end
   end
 
   # PATCH/PUT /restaurants/1

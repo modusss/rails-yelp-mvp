@@ -20,7 +20,6 @@
   <%= @restaurant.phone_number %>
 </p>
 
-<% @reviews.each do |r| %>
-  <%= r.rating %>
-  <%end%>
+<%= @reviews %>
+<%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
 <%= link_to 'Back', restaurants_path %>
